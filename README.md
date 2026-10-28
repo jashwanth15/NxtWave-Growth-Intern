@@ -140,7 +140,7 @@ Instead, I overruled the AI and directed the capital into an **₹800 Campus Amb
 
 | Deliverable | Format | Access Link |
 | :--- | :--- | :--- |
-| **1. Growth Plan** | 2-Page Document & 5-Slide Deck | [`submission/1_GROWTH_PLAN_2PAGE.md`](./submission/1_GROWTH_PLAN_2PAGE.md) \| [`submission/1_GROWTH_PLAN_SLIDES.md`](./submission/1_GROWTH_PLAN_SLIDES.md) |
+| **1. Growth Plan** | 2-Page Document & 5-Slide Deck | [`submission/1_GROWTH_PLAN_2PAGE.md`](./submission/1_GROWTH_PLAN_2PAGE.md) \| [`submission/1_GROWTH_PLAN_SLIDES.md`](./submission/1_GROWTH_PLAN_SLIDES.md) \| [`submission/CANVA_AI_PPT_PROMPT.md`](./submission/CANVA_AI_PPT_PROMPT.md) |
 | **2. Working Asset** | Live Production Prototype | [https://nxtwave-growth-intern.vercel.app](https://nxtwave-growth-intern.vercel.app) |
 | **3. The 3 Growth Tests** | Hypothesis $\rightarrow$ Test $\rightarrow$ Metric | [`submission/3_YOUR_3_TESTS.md`](./submission/3_YOUR_3_TESTS.md) |
 | **4. AI Worklog** | 3 Meaningful Prompt Iterations | [`submission/4_AI_WORKLOG.md`](./submission/4_AI_WORKLOG.md) |
