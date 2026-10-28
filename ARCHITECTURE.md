@@ -1,5 +1,9 @@
 # System Architecture & Technical Specifications
 
+[![Production Status](https://img.shields.io/badge/Vercel-Live_Deployment-success?style=for-the-badge&logo=vercel)](https://nxtwave-growth-intern-xi.vercel.app/)
+[![GitHub Repo](https://img.shields.io/badge/GitHub-Repository-181717?style=for-the-badge&logo=github)](https://github.com/jashwanth15/NxtWave-Growth-Intern)
+[![Challenge](https://img.shields.io/badge/Challenge-Round_1_Submission-0b66c2?style=for-the-badge)](https://forms.gle/xEtJSgJfeqvnxv8q6)
+
 This document outlines the architectural design, component interactions, data flow, and engineering decisions behind the **NxtWave AI Workshop Growth Funnel & Telemetry Engine**.
 
 ---
