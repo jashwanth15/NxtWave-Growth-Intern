@@ -1,0 +1,4 @@
+# Local developer files
+_local_submission_reference/
+.DS_Store
+*.log
