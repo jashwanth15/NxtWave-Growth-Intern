@@ -1,0 +1,1289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NxtWave CCBP 4.0 | Build Your First AI Project in 60 Minutes</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Canvas Confetti -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</head>
+<body class="bg-white text-slate-800 font-sans antialiased min-h-screen flex flex-col selection:bg-blue-600 selection:text-white">
+
+  <!-- Top Announcement Bar -->
+  <div class="bg-gradient-to-r from-blue-700 via-indigo-600 to-blue-700 text-white text-xs sm:text-sm font-medium py-2 px-4 text-center flex items-center justify-center gap-2 shadow-sm">
+    <span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+    <span class="font-semibold">Exclusive Live Workshop for Final-Year Engineering Students (Class of 2025/2026)</span>
+    <span id="bannerSeatCounter" class="hidden md:inline bg-white/20 text-white text-xs px-2.5 py-0.5 rounded-full font-mono font-bold">500 Seats Available</span>
+  </div>
+
+  <!-- NxtWave Original Styled Navbar -->
+  <header class="border-b border-slate-100 bg-white/95 backdrop-blur sticky top-0 z-50 shadow-[0_2px_10px_-4px_rgba(0,0,0,0.05)]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between">
+      
+      <!-- NxtWave Signature Logo -->
+      <div class="flex items-center gap-8">
+        <a href="javascript:void(0)" id="logoBtn" class="flex items-center gap-1 group">
+          <div class="flex flex-col">
+            <div class="flex items-center">
+              <span class="font-black text-2xl tracking-tighter text-[#0b66c2]">NXT</span>
+              <span class="font-black text-2xl tracking-tighter text-[#0f172a] ml-1">WAVE</span>
+              <span class="text-[9px] font-bold text-slate-400 ml-0.5 -mt-2">TM</span>
+            </div>
+            <span class="text-[9.5px] font-bold text-slate-400 tracking-wider -mt-1 uppercase">Transforming Careers</span>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation Links matching ccbp.in -->
+        <nav class="hidden lg:flex items-center gap-7 text-sm font-semibold text-slate-600">
+          <a href="javascript:void(0)" id="navHome" class="text-[#0b66c2] hover:text-blue-700 transition-colors">Home</a>
+          
+          <!-- Programs Dropdown -->
+          <div class="relative group cursor-pointer py-2">
+            <button type="button" id="navPrograms" class="flex items-center gap-1 hover:text-[#0b66c2] transition-colors font-semibold text-sm focus:outline-none">
+              Programs
+              <svg class="w-3.5 h-3.5 text-slate-400 group-hover:text-[#0b66c2] transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+
+            <!-- Dropdown Menu -->
+            <div class="absolute left-0 top-full pt-2 w-72 hidden group-hover:block transition-all z-50">
+              <div class="bg-white rounded-2xl shadow-xl border border-slate-100 p-3 space-y-2">
+                <div id="dropAcademy" class="p-2.5 rounded-xl hover:bg-blue-50/60 transition-colors cursor-pointer">
+                  <span class="text-xs font-black text-[#0b66c2] block tracking-wide">NXT WAVE ACADEMY</span>
+                  <span class="text-[11px] text-slate-500">For 1st, 2nd, 3rd year engineering students</span>
+                </div>
+                <div id="dropIntensive" class="p-2.5 rounded-xl hover:bg-blue-50/60 transition-colors cursor-pointer border-t border-slate-100">
+                  <span class="text-xs font-black text-indigo-700 block tracking-wide">NXT WAVE INTENSIVE</span>
+                  <span class="text-[11px] text-slate-500">For final year & graduates seeking rapid placement</span>
+                </div>
+                <div id="dropNiat" class="p-2.5 rounded-xl hover:bg-blue-50/60 transition-colors cursor-pointer border-t border-slate-100 flex items-center gap-2">
+                  <span class="w-6 h-6 rounded bg-red-800 text-white font-serif font-black text-xs flex items-center justify-center shrink-0">NI</span>
+                  <div>
+                    <span class="text-xs font-bold text-slate-800 block leading-tight">NIAT Technologies</span>
+                    <span class="text-[10px] text-slate-500">Industry-ready upskilling</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <a href="javascript:void(0)" id="navReviews" class="hover:text-[#0b66c2] transition-colors">Reviews</a>
+          <a href="javascript:void(0)" id="navHire" class="hover:text-[#0b66c2] transition-colors">Hire with Us</a>
+        </nav>
+      </div>
+
+      <!-- Right Header Actions & Evaluator Switcher -->
+      <div class="flex items-center gap-3">
+        <!-- Reviewer Toggle (Student vs Internal Growth Dashboard) -->
+        <div class="flex items-center bg-slate-100 p-1 rounded-xl border border-slate-200">
+          <button type="button" id="viewStudentBtn" class="px-3.5 py-1.5 rounded-lg text-xs font-bold transition-all bg-white text-[#0b66c2] shadow-sm flex items-center gap-1.5">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
+            Student View
+          </button>
+          <button type="button" id="viewDashboardBtn" class="px-3.5 py-1.5 rounded-lg text-xs font-bold text-slate-500 hover:text-slate-900 transition-all flex items-center gap-1.5">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
+            Growth Strategy <span class="bg-blue-100 text-[#0b66c2] text-[9px] px-1.5 py-0.2 rounded font-mono font-bold">500 GOAL</span>
+          </button>
+        </div>
+
+        <!-- Dynamic Role-Based Authentication & Session Container -->
+        <div id="navAuthContainer" class="flex items-center gap-2">
+          <!-- Unauthenticated Sign-In Button -->
+          <button type="button" id="navLoginBtn" class="flex items-center gap-1.5 text-xs font-bold text-white bg-[#0b66c2] hover:bg-blue-700 px-3.5 py-1.5 rounded-xl shadow-xs transition-all">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"></path></svg>
+            <span>Sign In / Login</span>
+          </button>
+
+          <!-- Authenticated Profile Badge (Role Indicator & Dropdown) -->
+          <div id="navUserBadge" class="hidden flex items-center gap-2 bg-slate-50 border border-slate-200/90 pl-2.5 pr-1.5 py-1 rounded-xl shadow-xs">
+            <span id="navRoleIcon" class="text-sm">🎓</span>
+            <div class="flex flex-col text-left">
+              <span id="navUserName" class="text-xs font-black text-slate-800 leading-tight">Aarav Sharma</span>
+              <span id="navUserRole" class="text-[9px] font-bold text-slate-500 uppercase tracking-wider leading-none">Student Attendee</span>
+            </div>
+            <button type="button" id="navSwitchRoleBtn" class="ml-1 text-[10px] font-bold text-[#0b66c2] hover:text-blue-800 px-1.5 py-0.5 rounded hover:bg-blue-50 transition-colors" title="Switch Role / Account">
+              Switch
+            </button>
+            <button type="button" id="navLogoutBtn" class="text-[10px] font-bold text-slate-400 hover:text-red-600 px-1.5 py-0.5 rounded hover:bg-red-50 transition-colors" title="Sign Out">
+              Sign Out
+            </button>
+          </div>
+
+          <!-- Legacy fallback button for compatibility -->
+          <button type="button" id="navLogin" class="hidden"></button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN CONTAINER: STUDENT EXPERIENCE VIEW -->
+  <main id="studentView" class="flex-1 max-w-6xl mx-auto px-4 py-8 sm:py-12 w-full">
+    
+    <!-- Dedicated Role Authorization Section: Student Access & Verification Status -->
+    <div id="studentAuthBar" class="mb-8 p-4 bg-gradient-to-r from-blue-50/90 via-white to-blue-50/60 border border-blue-200/90 rounded-2xl shadow-xs transition-all flex flex-col md:flex-row items-start md:items-center justify-between gap-3.5">
+      <div class="flex items-center gap-3">
+        <div id="studentAuthAvatar" class="w-10 h-10 rounded-2xl bg-[#0b66c2] text-white flex items-center justify-center font-black text-base shrink-0 shadow-xs">
+          🎓
+        </div>
+        <div>
+          <div class="flex items-center gap-2 flex-wrap">
+            <span id="studentAuthTitle" class="text-xs sm:text-sm font-extrabold text-[#0f172a]">
+              Student Attendee Authorization: Active
+            </span>
+            <span id="studentAuthStatusBadge" class="text-[9.5px] font-bold bg-blue-100 text-[#0b66c2] px-2.5 py-0.5 rounded-full font-mono uppercase tracking-wide">
+              Verified Candidate
+            </span>
+            <span id="studentTicketBadge" class="text-[9.5px] font-mono font-bold bg-slate-100 text-slate-700 border border-slate-200 px-2 py-0.5 rounded-full">
+              Ticket: #NW-AI-READY
+            </span>
+          </div>
+          <p id="studentAuthSubtitle" class="text-[11px] text-slate-500 mt-0.5">
+            Authorized for 60-Minute AI Project Lab, ATS Resume Gap Diagnostic, and VIP Starter Vault.
+          </p>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-2 self-end md:self-center shrink-0">
+        <button type="button" id="btnStudentViewPass" class="hidden text-xs font-bold text-[#0b66c2] hover:text-blue-800 bg-white hover:bg-blue-50 border border-blue-200 px-3 py-1.5 rounded-xl transition-all shadow-xs">
+          🎟️ View Pass
+        </button>
+        <button type="button" id="btnStudentAuthSwitch" class="text-xs font-bold text-slate-700 hover:text-slate-900 bg-white hover:bg-slate-50 border border-slate-200 px-3 py-1.5 rounded-xl transition-all shadow-xs flex items-center gap-1.5">
+          <span>🛡️</span> Switch to Admin
+        </button>
+      </div>
+    </div>
+
+    <!-- Hero Section -->
+    <div class="text-center max-w-4xl mx-auto mb-12 relative">
+      <!-- Decorative Pastel Shapes -->
+      <div class="absolute -left-12 -top-8 w-40 h-40 bg-emerald-100/60 rounded-full blur-2xl pointer-events-none -z-10"></div>
+      <div class="absolute -right-12 -bottom-8 w-48 h-48 bg-amber-100/60 rounded-full blur-2xl pointer-events-none -z-10"></div>
+      <div class="absolute left-1/2 -translate-x-1/2 top-4 w-72 h-36 bg-blue-100/50 rounded-full blur-3xl pointer-events-none -z-10"></div>
+
+      <!-- Characteristic NxtWave Program Pills -->
+      <div class="flex flex-wrap items-center justify-center gap-2 mb-4">
+        <span class="bg-indigo-50 border border-indigo-200/80 text-indigo-700 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">
+          FINAL YEAR / GRADUATES
+        </span>
+        <span class="bg-teal-50 border border-teal-200/80 text-teal-700 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">
+          ANY BRANCH (CSE / ECE / MECH / CIVIL)
+        </span>
+        <span class="bg-amber-50 border border-amber-200/80 text-amber-800 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">
+          FREE 60-MINUTE WORKSHOP
+        </span>
+      </div>
+
+      <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-[#0f172a] tracking-tight leading-[1.15] mb-5">
+        Designed to Transform You into an <br class="hidden sm:inline">
+        <span class="text-[#0b66c2] bg-clip-text">Industry-Ready AI Developer</span>
+      </h1>
+
+      <p class="text-slate-600 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
+        Don't let cloned academic projects hold back your tech placements. Benchmark your resume against 2025 hiring standards in 45 seconds & claim your live project workshop pass.
+      </p>
+    </div>
+
+    <!-- NxtWave 3-Step Breadcrumb Progress Indicator -->
+    <div class="max-w-xl mx-auto mb-10">
+      <div class="flex items-center justify-between text-xs font-bold text-slate-500 mb-2">
+        <span id="stepLabel1" class="text-[#0b66c2] flex items-center gap-1 font-extrabold">
+          <span class="w-4 h-4 rounded-full bg-[#0b66c2] text-white flex items-center justify-center text-[10px]">1</span>
+          Placement Diagnostic
+        </span>
+        <span id="stepLabel2" class="text-slate-400 flex items-center gap-1 font-semibold">
+          <span class="w-4 h-4 rounded-full bg-slate-200 text-slate-600 flex items-center justify-center text-[10px]">2</span>
+          ATS AI Gap Report
+        </span>
+        <span id="stepLabel3" class="text-slate-400 flex items-center gap-1 font-semibold">
+          <span class="w-4 h-4 rounded-full bg-slate-200 text-slate-600 flex items-center justify-center text-[10px]">3</span>
+          VIP Pass & Starter Vault
+        </span>
+      </div>
+      <div class="h-2.5 bg-slate-100 rounded-full overflow-hidden p-0.5 border border-slate-200">
+        <div id="quizProgressBar" class="h-full bg-gradient-to-r from-[#0b66c2] to-blue-500 rounded-full transition-all duration-500" style="width: 33%"></div>
+      </div>
+    </div>
+
+    <!-- STAGE 1: DIAGNOSTIC INTERACTION -->
+    <section id="stageDiagnostic" class="bg-white border border-slate-200 rounded-3xl p-6 sm:p-10 shadow-[0_10px_30px_-10px_rgba(0,0,0,0.06)] relative overflow-hidden">
+      
+      <!-- Question 1 Block -->
+      <div id="qBlock1" class="space-y-6">
+        <div>
+          <span class="bg-blue-50 text-[#0b66c2] text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider inline-block mb-2">Step 1 of 2</span>
+          <h2 class="text-xl sm:text-2xl font-black text-[#0f172a]">Select Your Engineering Branch & Placement Target</h2>
+          <p class="text-sm text-slate-500 mt-1">NxtWave trains both Circuit & Non-Circuit students to secure top-package software roles.</p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <!-- Card Option 1 -->
+          <label class="option-card cursor-pointer select-none border-2 border-[#0b66c2] bg-blue-50/30 p-5 rounded-2xl flex items-start gap-4 transition-all group active">
+            <input type="radio" name="branch" value="cse" class="w-5 h-5 mt-0.5 text-[#0b66c2] focus:ring-0 cursor-pointer shrink-0" checked>
+            <div class="cursor-pointer select-none">
+              <span class="bg-blue-100 text-[#0b66c2] text-[10px] font-bold px-2 py-0.5 rounded-full uppercase cursor-pointer select-none">CIRCUIT STREAM</span>
+              <span class="font-bold text-base text-slate-900 block mt-1 group-hover:text-[#0b66c2] transition-colors cursor-pointer select-none">CSE / IT / AI & Data Science</span>
+              <span class="text-xs text-slate-500 block mt-0.5 cursor-pointer select-none">Targeting Software Engineer, Full Stack, or AI Developer roles</span>
+            </div>
+          </label>
+
+          <!-- Card Option 2 -->
+          <label class="option-card cursor-pointer select-none border-2 border-slate-200 bg-white hover:border-[#0b66c2] hover:bg-blue-50/20 p-5 rounded-2xl flex items-start gap-4 transition-all group">
+            <input type="radio" name="branch" value="ece" class="w-5 h-5 mt-0.5 text-[#0b66c2] focus:ring-0 cursor-pointer shrink-0">
+            <div class="cursor-pointer select-none">
+              <span class="bg-teal-100 text-teal-700 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase cursor-pointer select-none">CIRCUIT & TECH</span>
+              <span class="font-bold text-base text-slate-900 block mt-1 group-hover:text-[#0b66c2] transition-colors cursor-pointer select-none">ECE / EEE / Instrumentation</span>
+              <span class="text-xs text-slate-500 block mt-0.5 cursor-pointer select-none">Targeting Software Developer + Embedded Tech roles</span>
+            </div>
+          </label>
+
+          <!-- Card Option 3 -->
+          <label class="option-card cursor-pointer select-none border-2 border-slate-200 bg-white hover:border-[#0b66c2] hover:bg-blue-50/20 p-5 rounded-2xl flex items-start gap-4 transition-all group">
+            <input type="radio" name="branch" value="mech_civil" class="w-5 h-5 mt-0.5 text-[#0b66c2] focus:ring-0 cursor-pointer shrink-0">
+            <div class="cursor-pointer select-none">
+              <span class="bg-amber-100 text-amber-800 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase cursor-pointer select-none">NON-CIRCUIT PIVOT</span>
+              <span class="font-bold text-base text-slate-900 block mt-1 group-hover:text-[#0b66c2] transition-colors cursor-pointer select-none">Mechanical / Civil / Chemical</span>
+              <span class="text-xs text-slate-500 block mt-0.5 cursor-pointer select-none">Zero prior coding required • Pivoting to high-paid IT roles</span>
+            </div>
+          </label>
+
+          <!-- Card Option 4 -->
+          <label class="option-card cursor-pointer select-none border-2 border-slate-200 bg-white hover:border-[#0b66c2] hover:bg-blue-50/20 p-5 rounded-2xl flex items-start gap-4 transition-all group">
+            <input type="radio" name="branch" value="other" class="w-5 h-5 mt-0.5 text-[#0b66c2] focus:ring-0 cursor-pointer shrink-0">
+            <div class="cursor-pointer select-none">
+              <span class="bg-purple-100 text-purple-700 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase cursor-pointer select-none">TECH GRADUATE</span>
+              <span class="font-bold text-base text-slate-900 block mt-1 group-hover:text-[#0b66c2] transition-colors cursor-pointer select-none">MCA / BCA / BSc / M.Tech</span>
+              <span class="text-xs text-slate-500 block mt-0.5 cursor-pointer select-none">Accelerating placement drives for 2025/2026 hiring cycle</span>
+            </div>
+          </label>
+        </div>
+
+        <div class="pt-4 flex justify-end">
+          <button type="button" id="btnNext1" class="btn-cta-pulse bg-[#0b66c2] hover:bg-blue-700 text-white font-bold text-sm px-8 py-3.5 rounded-xl transition-all flex items-center gap-2 shadow-lg shadow-blue-600/20">
+            Continue to Step 2
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Question 2 Block -->
+      <div id="qBlock2" class="space-y-6 hidden">
+        <div>
+          <span class="bg-blue-50 text-[#0b66c2] text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider inline-block mb-2">Step 2 of 2</span>
+          <h2 class="text-xl sm:text-2xl font-black text-[#0f172a]">What projects are currently featured on your resume or GitHub?</h2>
+          <p class="text-sm text-slate-500 mt-1">Select all that apply honestly. This dynamically calculates your placement ATS risk.</p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <label class="option-card cursor-pointer select-none border-2 border-slate-200 bg-white hover:border-[#0b66c2] hover:bg-blue-50/10 p-5 rounded-2xl flex items-start gap-4 transition-all group">
+            <input type="checkbox" name="project_type" value="crud" class="w-5 h-5 mt-0.5 text-[#0b66c2] rounded border-slate-300 focus:ring-0 cursor-pointer shrink-0">
+            <div class="cursor-pointer select-none">
+              <span class="font-bold text-sm text-slate-900 block group-hover:text-[#0b66c2] cursor-pointer select-none">Standard CRUD / Web App</span>
+              <span class="text-xs text-slate-500 mt-0.5 block cursor-pointer select-none">To-Do list, Notes App, Weather App, Calculator</span>
+            </div>
+          </label>
+          <label class="option-card cursor-pointer select-none border-2 border-slate-200 bg-white hover:border-[#0b66c2] hover:bg-blue-50/10 p-5 rounded-2xl flex items-start gap-4 transition-all group">
+            <input type="checkbox" name="project_type" value="clone" class="w-5 h-5 mt-0.5 text-[#0b66c2] rounded border-slate-300 focus:ring-0 cursor-pointer shrink-0">
+            <div class="cursor-pointer select-none">
+              <span class="font-bold text-sm text-slate-900 block group-hover:text-[#0b66c2] cursor-pointer select-none">Cloned / Tutorial UI Project</span>
+              <span class="text-xs text-slate-500 mt-0.5 block cursor-pointer select-none">Netflix UI clone, Amazon clone, Spotify clone</span>
+            </div>
+          </label>
+          <label class="option-card cursor-pointer select-none border-2 border-slate-200 bg-white hover:border-[#0b66c2] hover:bg-blue-50/10 p-5 rounded-2xl flex items-start gap-4 transition-all group">
+            <input type="checkbox" name="project_type" value="academic" class="w-5 h-5 mt-0.5 text-[#0b66c2] rounded border-slate-300 focus:ring-0 cursor-pointer shrink-0">
+            <div class="cursor-pointer select-none">
+              <span class="font-bold text-sm text-slate-900 block group-hover:text-[#0b66c2] cursor-pointer select-none">College Academic Syllabus Project</span>
+              <span class="text-xs text-slate-500 mt-0.5 block cursor-pointer select-none">Standard lab assignment or group mini-project</span>
+            </div>
+          </label>
+          <label class="option-card cursor-pointer select-none border-2 border-slate-200 bg-white hover:border-[#0b66c2] hover:bg-blue-50/10 p-5 rounded-2xl flex items-start gap-4 transition-all group">
+            <input type="checkbox" name="project_type" value="deployed_ai" class="w-5 h-5 mt-0.5 text-[#0b66c2] rounded border-slate-300 focus:ring-0 cursor-pointer shrink-0">
+            <div class="cursor-pointer select-none">
+              <span class="font-bold text-sm text-slate-900 block group-hover:text-[#0b66c2] cursor-pointer select-none">Live Deployed GenAI / LLM Application</span>
+              <span class="text-xs text-slate-500 mt-0.5 block cursor-pointer select-none">With OpenAI/Anthropic API, RAG, or Live URL</span>
+            </div>
+          </label>
+        </div>
+
+        <div class="pt-4 flex justify-between items-center">
+          <button type="button" id="btnBack2" class="text-slate-500 hover:text-slate-900 text-xs font-bold px-4 py-2">← Back to Step 1</button>
+          <button type="button" id="btnNext2" class="btn-cta-pulse bg-[#0b66c2] hover:bg-blue-700 text-white font-bold text-sm px-8 py-3.5 rounded-xl transition-all flex items-center gap-2 shadow-lg shadow-blue-600/20">
+            Generate My AI Diagnostic Report
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- STAGE 2: DIAGNOSTIC REPORT & REGISTRATION CALL-TO-ACTION -->
+    <section id="stageReport" class="hidden space-y-8">
+      
+      <!-- Diagnostic Score Banner -->
+      <div class="bg-white border-2 border-amber-200 rounded-3xl p-6 sm:p-10 shadow-lg relative overflow-hidden">
+        
+        <div class="flex flex-col md:flex-row items-center justify-between gap-8">
+          <div class="space-y-3 text-center md:text-left">
+            <div id="reportAlertPill" class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-50 border border-amber-200 text-amber-800 text-xs font-bold">
+              ⚠️ Critical Placement Alert for 2025/2026 Batch
+            </div>
+            <h2 class="text-2xl sm:text-4xl font-black text-[#0f172a]">
+              Your AI Project Readiness Score: <span id="userScore" class="text-amber-600">34 / 100</span>
+            </h2>
+            <p id="reportDescription" class="text-slate-600 text-sm sm:text-base max-w-xl leading-relaxed">
+              Recruiters across 1,000+ top hiring partners report that resumes containing only cloned projects have high rejection rates in automated ATS screenings.
+            </p>
+          </div>
+
+          <!-- Circular Metric Graphic -->
+          <div class="relative w-36 h-36 flex items-center justify-center shrink-0">
+            <svg class="w-full h-full -rotate-90" viewBox="0 0 36 36">
+              <path class="text-slate-100" stroke-width="3.5" stroke="currentColor" fill="none" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+              <path id="metricCirclePath" class="text-amber-500 stroke-dasharray-anim" stroke-dasharray="34, 100" stroke-width="3.5" stroke-linecap="round" stroke="currentColor" fill="none" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+            </svg>
+            <div class="absolute flex flex-col items-center">
+              <span id="scoreTextCircle" class="text-3xl font-black text-slate-900">34%</span>
+              <span id="riskBadge" class="text-[10px] text-amber-600 font-bold uppercase tracking-wider">High Risk</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3 NxtWave Diagnostic Insight Cards (Dynamically populated) -->
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-8 pt-8 border-t border-slate-100">
+          <div id="cardBox1" class="bg-red-50/50 p-4 rounded-2xl border border-red-100">
+            <div id="cardTitle1" class="text-red-700 text-xs font-black mb-1">❌ ATS Red Flag</div>
+            <div id="cardDesc1" class="text-xs text-slate-600">Generic To-Do and UI clones are filtered out as non-differentiators.</div>
+          </div>
+          <div id="cardBox2" class="bg-amber-50/50 p-4 rounded-2xl border border-amber-100">
+            <div id="cardTitle2" class="text-amber-800 text-xs font-black mb-1">⚠️ Missing Proof of Skill</div>
+            <div id="cardDesc2" class="text-xs text-slate-600">No verifiable live deployment link or public GitHub documentation.</div>
+          </div>
+          <div id="cardBox3" class="bg-emerald-50/50 p-4 rounded-2xl border border-emerald-100">
+            <div id="cardTitle3" class="text-emerald-800 text-xs font-black mb-1">✅ 60-Minute NxtWave Solution</div>
+            <div id="cardDesc3" class="text-xs text-slate-600">Build & deploy a real GenAI project this Sunday.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Workshop Registration Card -->
+      <div class="bg-white border border-slate-200 rounded-3xl p-6 sm:p-10 shadow-xl max-w-xl mx-auto">
+        <div class="space-y-6">
+          <div class="text-center">
+            <span class="text-xs font-black uppercase tracking-wider text-[#0b66c2] bg-blue-50 px-3.5 py-1 rounded-full">
+              Zero-Friction Pass Generation
+            </span>
+            <h3 class="text-2xl font-black text-[#0f172a] mt-3">
+              Claim Your Free Workshop Pass + Starter Vault
+            </h3>
+            <p class="text-xs sm:text-sm text-slate-500 mt-1">
+              "Build Your First AI Project in 60 Minutes" • Live Interactive Lab
+            </p>
+          </div>
+
+          <form id="regForm" class="space-y-4">
+            <div>
+              <label class="block text-xs font-bold text-slate-700 mb-1">Full Name</label>
+              <input type="text" id="studentName" required placeholder="Enter your full name" class="w-full bg-slate-50 border border-slate-200 focus:border-[#0b66c2] focus:bg-white rounded-xl px-4 py-3 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-100 transition-all font-medium">
+            </div>
+
+            <div>
+              <label class="block text-xs font-bold text-slate-700 mb-1">WhatsApp Number (For Ticket Pass & Zoom Room Link)</label>
+              <div class="flex">
+                <span class="inline-flex items-center px-3.5 rounded-l-xl border border-r-0 border-slate-200 bg-slate-100 text-slate-600 text-sm font-mono font-bold">+91</span>
+                <input type="tel" id="studentPhone" required placeholder="Enter 10-digit WhatsApp number" class="w-full bg-slate-50 border border-slate-200 focus:border-[#0b66c2] focus:bg-white rounded-r-xl px-4 py-3 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-100 transition-all font-mono">
+              </div>
+              <span class="text-[11px] text-slate-400 mt-1 block">🔒 Zero spam. Instant ticket and reminder sent on WhatsApp.</span>
+            </div>
+
+            <div>
+              <label class="block text-xs font-bold text-slate-700 mb-1">College Name & City</label>
+              <input type="text" id="studentCollege" required placeholder="Enter your college name and city" class="w-full bg-slate-50 border border-slate-200 focus:border-[#0b66c2] focus:bg-white rounded-xl px-4 py-3 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-100 transition-all font-medium">
+            </div>
+
+            <button type="submit" id="btnClaimTicket" class="btn-cta-pulse w-full bg-[#0b66c2] hover:bg-blue-700 text-white font-bold text-base py-4 rounded-xl shadow-lg shadow-blue-600/30 transition-all flex items-center justify-center gap-2">
+              <span>🎟️ Generate My VIP Ticket & Entry Pass</span>
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- STAGE 3: TICKET PASS & VIRAL REFERRAL ENGINE -->
+    <section id="stageTicket" class="hidden space-y-8">
+      
+      <!-- Quick Navigation Header -->
+      <div class="flex flex-wrap items-center justify-between max-w-2xl mx-auto pt-2 gap-2">
+        <button type="button" id="btnBackToDiagnostic" class="text-xs font-bold text-slate-600 hover:text-[#0b66c2] flex items-center gap-1.5 transition-colors bg-white px-3.5 py-1.5 rounded-xl border border-slate-200 shadow-xs hover:border-[#0b66c2]/40">
+          <span>←</span> Back to Placement Diagnostic
+        </button>
+        <button type="button" id="btnAdminTestAnother" class="hidden text-xs font-bold text-white bg-[#0b66c2] hover:bg-blue-700 px-3.5 py-1.5 rounded-xl transition-all shadow-xs flex items-center gap-1.5">
+          <span>🔄</span> Admin: Test Another Registration (Step 1)
+        </button>
+        <span class="text-[11px] font-mono text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-200 font-bold flex items-center gap-1.5">
+          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+          Personalized Pass Active
+        </span>
+      </div>
+
+      <!-- Confirmation Banner -->
+      <div class="text-center space-y-2">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs font-bold">
+          🎉 Registration Confirmed! Seat Reserved
+        </div>
+        <h2 class="text-2xl sm:text-4xl font-black text-[#0f172a]">Your Official Workshop Pass is Ready</h2>
+        <p class="text-sm text-slate-500">Save your ticket below and invite batchmates to unlock the AI Project Starter Vault.</p>
+      </div>
+
+      <!-- PERSONALIZED TICKET PASS -->
+      <div class="max-w-2xl mx-auto">
+        <div id="ticketCard" class="bg-white border-2 border-blue-200 rounded-3xl p-6 sm:p-8 shadow-xl relative overflow-hidden">
+          
+          <!-- Decorative Header Bar -->
+          <div class="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-[#0b66c2] via-indigo-600 to-blue-500"></div>
+
+          <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between border-b border-slate-100 pb-5 gap-4">
+            <div class="flex items-center gap-3">
+              <div class="w-11 h-11 rounded-xl bg-[#0b66c2] text-white flex items-center justify-center font-black text-xl shadow-md">
+                N
+              </div>
+              <div>
+                <span class="font-extrabold text-slate-900 text-lg tracking-tight">NxtWave AI Workshop</span>
+                <span class="block text-xs text-[#0b66c2] font-bold">CCBP 4.0 Verified Pass</span>
+              </div>
+            </div>
+            <div class="text-right">
+              <span class="text-[10px] text-slate-400 uppercase tracking-widest block font-mono font-bold">TICKET NUMBER</span>
+              <span id="passTicketId" class="text-base font-mono font-bold text-[#0b66c2]">—</span>
+            </div>
+          </div>
+
+          <div class="py-6 grid grid-cols-1 sm:grid-cols-3 gap-6 items-center">
+            <div class="sm:col-span-2 space-y-4">
+              <div>
+                <span class="text-[11px] text-slate-400 font-bold uppercase tracking-wider block">ATTENDEE NAME</span>
+                <span id="passStudentName" class="text-xl font-black text-slate-900 block">—</span>
+                <span id="passCollegeName" class="text-xs text-slate-500 font-medium block">—</span>
+              </div>
+              <div class="grid grid-cols-2 gap-4 pt-1">
+                <div>
+                  <span class="text-[10px] text-slate-400 font-bold uppercase tracking-wider block">DATE & TIME</span>
+                  <span class="text-xs font-bold text-slate-800">Sunday, 7:00 PM IST</span>
+                </div>
+                <div>
+                  <span class="text-[10px] text-slate-400 font-bold uppercase tracking-wider block">SESSION MODE</span>
+                  <span class="text-xs font-bold text-emerald-600 flex items-center gap-1">
+                    <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                    Live Zoom + Code Lab
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Authentic QR Code Box -->
+            <div class="flex flex-col items-center justify-center bg-slate-50 p-4 rounded-2xl border border-slate-200">
+              <div class="w-24 h-24 bg-white p-1.5 rounded-xl border border-slate-200 shadow-sm flex items-center justify-center">
+                <svg viewBox="0 0 24 24" class="w-full h-full text-slate-900" fill="currentColor">
+                  <path d="M2 2h8v8H2V2zm2 2v4h4V4H4zm10-2h8v8h-8V2zm2 2v4h4V4h-4zM2 14h8v8H2v-8zm2 2v4h4v-4H4zm8-2h2v2h-2v-2zm4 0h2v2h-2v-2zm-4 4h2v2h-2v-2zm6-4h2v2h-2v-2zm0 4h2v2h-2v-2zm-6 2h2v2h-2v-2zm4 0h4v2h-4v-2zm-8-4h2v2h-2v-2z"/>
+                </svg>
+              </div>
+              <span class="text-[9px] font-mono font-bold text-slate-400 mt-2">SCAN FOR CHECK-IN</span>
+            </div>
+          </div>
+
+          <!-- Bottom Action Buttons inside Ticket -->
+          <div class="flex flex-wrap items-center justify-between gap-3 pt-4 border-t border-slate-100">
+            <div class="text-xs text-slate-500 font-medium">
+              ⚡ Includes: Project Repo + ATS Guide + Certificate
+            </div>
+            <div class="flex items-center gap-2">
+              <button type="button" id="btnDownloadTicket" class="px-4 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-xs font-bold text-white transition-all flex items-center gap-1.5 shadow-sm">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                Download Pass (PNG)
+              </button>
+              <button type="button" id="btnAddToCalendar" class="px-4 py-2 rounded-xl bg-blue-50 hover:bg-blue-100 text-[#0b66c2] text-xs font-bold transition-all flex items-center gap-1.5 border border-blue-200">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                Add to Calendar (.ics)
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- VIRAL REFERRAL ENGINE -->
+      <div class="max-w-2xl mx-auto bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-xl relative overflow-hidden">
+        
+        <div class="text-center space-y-2 mb-6">
+          <span class="bg-amber-100 text-amber-800 text-xs font-black px-3.5 py-1 rounded-full uppercase tracking-wider">
+            🎁 Bonus Unlock: Student Peer Loop
+          </span>
+          <h3 class="text-2xl font-black text-[#0f172a]">Unlock the VIP AI Project Starter Vault</h3>
+          <p class="text-xs sm:text-sm text-slate-600">
+            Invite <span class="font-bold text-[#0b66c2]">3 final-year classmates</span> using your link. Once they register, immediately unlock:
+          </p>
+        </div>
+
+        <!-- 3 Locked Perks -->
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-6">
+          <div class="bg-slate-50 p-4 rounded-2xl border border-slate-100 text-center">
+            <span class="text-2xl block mb-1">💻</span>
+            <span class="text-xs font-bold text-slate-800 block">Complete AI Repo</span>
+            <span class="text-[11px] text-slate-500">Ready-to-deploy GitHub repo</span>
+          </div>
+          <div class="bg-slate-50 p-4 rounded-2xl border border-slate-100 text-center">
+            <span class="text-2xl block mb-1">📄</span>
+            <span class="text-xs font-bold text-slate-800 block">50+ ATS AI Bullets</span>
+            <span class="text-[11px] text-slate-500">Resume bullets proven to pass ATS</span>
+          </div>
+          <div class="bg-slate-50 p-4 rounded-2xl border border-slate-100 text-center">
+            <span class="text-2xl block mb-1">🧑‍🏫</span>
+            <span class="text-xs font-bold text-slate-800 block">1:1 Project Review</span>
+            <span class="text-[11px] text-slate-500">Mentor review before interviews</span>
+          </div>
+        </div>
+
+        <!-- Referral Progress Bar -->
+        <div class="bg-slate-50 border border-slate-200 p-5 rounded-2xl mb-6">
+          <div class="flex items-center justify-between text-xs font-bold mb-2">
+            <span class="text-slate-700">Your Referral Progress:</span>
+            <span class="text-[#0b66c2] font-mono"><span id="refCount">0</span> / 3 Batchmates Registered</span>
+          </div>
+          <div class="h-3.5 bg-slate-200 rounded-full overflow-hidden p-0.5 border border-slate-300">
+            <div id="refProgressBar" class="h-full bg-gradient-to-r from-amber-500 via-blue-600 to-emerald-500 rounded-full transition-all duration-500" style="width: 0%"></div>
+          </div>
+
+          <!-- Unlocked Banner -->
+          <div id="unlockedBanner" class="hidden mt-4 p-4 rounded-xl bg-emerald-100 border border-emerald-300 text-emerald-800 text-xs font-bold flex items-center justify-between">
+            <span>🎉 VIP Starter Vault UNLOCKED! Access links sent to your WhatsApp.</span>
+            <a href="javascript:void(0)" onclick="openVaultModal()" class="underline text-[#0b66c2] font-extrabold ml-2">Open Vault →</a>
+          </div>
+        </div>
+
+        <!-- Referral Link & Sharing Buttons -->
+        <div class="space-y-3">
+          <label class="block text-xs font-bold text-slate-700">Your Unique Referral Link</label>
+          <div class="flex items-center gap-2">
+            <input type="text" id="referralUrlInput" readonly placeholder="Your referral link will appear here upon registration" value="" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-xs font-mono font-bold text-[#0b66c2] select-all">
+            <button type="button" id="btnCopyLink" class="px-5 py-2.5 bg-slate-900 hover:bg-slate-800 text-white rounded-xl text-xs font-bold shrink-0 transition-all">
+              Copy
+            </button>
+          </div>
+
+          <!-- NxtWave WhatsApp Share Button (Production-Ready) -->
+          <div class="pt-2">
+            <button type="button" id="btnShareWhatsApp" class="w-full bg-[#25D366] hover:bg-[#1ea952] text-white font-bold text-sm py-4 rounded-xl shadow-lg shadow-emerald-500/20 transition-all flex items-center justify-center gap-2">
+              <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.007c.106.005.249-.04.39.299.144.347.491 1.2.534 1.288.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.353.101.173.45 1.743 1.956 2.052.195.04.382.016.49-.092.115-.115.49-.572.62-1.288.13-.716.26-.6.39-.542.13.058.823.388.965.46.142.072.237.108.272.167.035.059.035.343-.109.748z"/></svg>
+              Share to Class WhatsApp Group
+            </button>
+          </div>
+
+          <!-- Production Real Referral Verification Box -->
+          <div class="mt-4 p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-2.5 text-xs">
+            <div class="flex items-center justify-between font-bold text-slate-800">
+              <span class="flex items-center gap-1.5 text-[#0b66c2]">
+                <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                Automated Verification Status
+              </span>
+              <span id="verifiedCountBadge" class="font-mono text-[11px] bg-white px-2 py-0.5 rounded border border-slate-200 text-slate-700">0 / 3 Verified</span>
+            </div>
+            <p class="text-[11px] text-slate-500 leading-relaxed">
+              🔒 <strong>Anti-Fraud Verification:</strong> Referrals are tracked and credited when classmates register with unique WhatsApp numbers via your link. Unlock links are sent automatically to your WhatsApp.
+            </p>
+            <div id="referralList" class="space-y-1.5 pt-1 border-t border-slate-200">
+              <div class="text-[11px] text-slate-400 italic">Waiting for classmates to register via your link...</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Campus Ambassador Bounty Micro-Pool Section -->
+      <div class="max-w-2xl mx-auto bg-slate-50 border border-slate-200 rounded-3xl p-6">
+        <div class="flex items-center justify-between mb-4">
+          <div class="flex items-center gap-2">
+            <span class="text-xl">🏆</span>
+            <h4 class="text-sm font-black text-slate-900">Class Representative (CR) Bounty Leaderboard</h4>
+          </div>
+          <span class="text-xs font-mono font-bold text-emerald-700 bg-emerald-100 px-2.5 py-0.5 rounded-full border border-emerald-200">₹2,000 Total Prize Pool</span>
+        </div>
+        <div class="space-y-2 text-xs">
+          <div class="flex items-center justify-between p-3 rounded-xl bg-white border border-slate-200 shadow-sm">
+            <span class="text-slate-800 font-medium"><span class="text-amber-500 font-black">1st Tier</span> 50+ Verified Registrations</span>
+            <span class="font-mono text-[#0b66c2] font-bold">₹800 Cash / Voucher + NxtWave Lead Certificate</span>
+          </div>
+          <div class="flex items-center justify-between p-3 rounded-xl bg-white border border-slate-200 shadow-sm">
+            <span class="text-slate-800 font-medium"><span class="text-slate-400 font-black">2nd Tier</span> 40+ Verified Registrations</span>
+            <span class="font-mono text-[#0b66c2] font-bold">₹500 Cash / Voucher + NxtWave Lead Certificate</span>
+          </div>
+          <div class="flex items-center justify-between p-3 rounded-xl bg-white border border-slate-200 shadow-sm">
+            <span class="text-slate-800 font-medium"><span class="text-amber-700 font-black">3rd Tier</span> 35+ Verified Registrations</span>
+            <span class="font-mono text-[#0b66c2] font-bold">₹400 Cash / Voucher + NxtWave Lead Certificate</span>
+          </div>
+          <div class="flex items-center justify-between p-3 rounded-xl bg-white border border-slate-200 shadow-sm">
+            <span class="text-slate-800 font-medium"><span class="text-slate-500 font-black">4th Tier</span> 30+ Verified Registrations</span>
+            <span class="font-mono text-[#0b66c2] font-bold">₹300 Cash / Voucher + NxtWave Lead Certificate</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- INTERNAL VIEW: GROWTH ANALYTICS & OPS DASHBOARD -->
+  <section id="dashboardView" class="hidden flex-1 max-w-6xl mx-auto px-4 py-10 w-full space-y-8">
+    
+    <!-- Dashboard Header -->
+    <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-slate-200 pb-6">
+      <div>
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 text-[#0b66c2] text-xs font-bold mb-2">
+          NxtWave Growth Ops • 7-Day Campaign Strategy & Architecture
+        </div>
+        <h2 class="text-2xl sm:text-3xl font-black text-[#0f172a]">500 Registrations Growth Engine</h2>
+        <p class="text-xs sm:text-sm text-slate-500 mt-1">Live active session telemetry & 7-day mathematical allocation model</p>
+      </div>
+
+      <div class="flex flex-wrap items-center gap-3">
+        <!-- Live Real-Time Telemetry Stream Badge -->
+        <div class="flex items-center gap-2 bg-emerald-50 border border-emerald-200 px-3.5 py-1.5 rounded-2xl shadow-xs">
+          <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+          <span class="text-xs font-bold text-emerald-800 font-mono">Live Inflow Telemetry: Active</span>
+        </div>
+
+        <div class="text-right pl-2 border-l border-slate-200">
+          <span class="text-[10px] text-slate-400 uppercase tracking-wider block font-bold">CAMPAIGN TARGET</span>
+          <span class="text-xs font-black text-[#0b66c2] flex items-center gap-1.5 font-mono">
+            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+            Goal: 500 Students
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dedicated Role Authorization Section: Growth Admin RBAC & Security Matrix -->
+    <div id="adminAuthBar" class="p-4 sm:p-5 bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 text-white rounded-3xl border border-indigo-800/60 shadow-xl space-y-4">
+      <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 border-b border-indigo-900/60 pb-3.5">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-2xl bg-indigo-600 text-white flex items-center justify-center font-black text-lg shrink-0 shadow-md">
+            🛡️
+          </div>
+          <div>
+            <div class="flex items-center gap-2 flex-wrap">
+              <span class="text-sm font-black text-white">NxtWave Growth Ops Admin • Level-4 RBAC Verified</span>
+              <span class="text-[10px] font-mono font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 px-2 py-0.5 rounded-full flex items-center gap-1">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                FULL ACCESS (RWX)
+              </span>
+            </div>
+            <p class="text-xs text-indigo-200/80 mt-0.5">
+              Signed in: <span id="adminAuthEmail" class="font-bold text-white">admin@nxtwave.in</span> (Growth Marketing & Evaluator Ops) • Token: <span class="font-mono text-[11px] text-indigo-300">NW-RBAC-AES256-VALID</span>
+            </p>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-2 self-end sm:self-center">
+          <button type="button" id="btnAdminTestStudentView" class="text-xs font-bold text-indigo-100 hover:text-white bg-white/10 hover:bg-white/20 border border-white/20 px-3.5 py-1.5 rounded-xl transition-all">
+            🎓 Test Student UX
+          </button>
+          <button type="button" id="btnAdminRevokeToken" class="text-xs font-bold text-red-200 hover:text-red-100 bg-red-950/60 hover:bg-red-900/60 border border-red-700/50 px-3 py-1.5 rounded-xl transition-all">
+            Sign Out
+          </button>
+        </div>
+      </div>
+
+      <!-- 4 Explicit RBAC Authorization Permissions -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5 text-xs">
+        <div class="p-2.5 bg-white/5 border border-white/10 rounded-xl">
+          <div class="flex items-center justify-between text-indigo-200 font-bold mb-1 text-[11px]">
+            <span>1. Telemetry Inflow</span>
+            <span class="text-emerald-400 font-mono text-[10px]">AUTHORIZED</span>
+          </div>
+          <p class="text-[10.5px] text-slate-300 leading-tight">Live session stream of visitors, diagnostics, registrations & referrals.</p>
+        </div>
+
+        <div class="p-2.5 bg-white/5 border border-white/10 rounded-xl">
+          <div class="flex items-center justify-between text-indigo-200 font-bold mb-1 text-[11px]">
+            <span>2. 7-Day Velocity</span>
+            <span class="text-emerald-400 font-mono text-[10px]">AUTHORIZED</span>
+          </div>
+          <p class="text-[10.5px] text-slate-300 leading-tight">Strict sequential day milestone progression towards the 500-seat goal.</p>
+        </div>
+
+        <div class="p-2.5 bg-white/5 border border-white/10 rounded-xl">
+          <div class="flex items-center justify-between text-indigo-200 font-bold mb-1 text-[11px]">
+            <span>3. Budget & CAC Model</span>
+            <span class="text-emerald-400 font-mono text-[10px]">AUTHORIZED</span>
+          </div>
+          <p class="text-[10.5px] text-slate-300 leading-tight">₹2,000 budget cap enforcement & real-time ₹4.00 blended CAC calculation.</p>
+        </div>
+
+        <div class="p-2.5 bg-white/5 border border-white/10 rounded-xl">
+          <div class="flex items-center justify-between text-indigo-200 font-bold mb-1 text-[11px]">
+            <span>4. Webhook Testbed</span>
+            <span class="text-emerald-400 font-mono text-[10px]">AUTHORIZED</span>
+          </div>
+          <p class="text-[10.5px] text-slate-300 leading-tight">Direct simulation triggers for CR broadcast batch, peer loop & day advance.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Real-Time Active Session Telemetry Cards -->
+    <div>
+      <div class="flex items-center justify-between mb-3">
+        <h3 class="text-xs font-extrabold uppercase tracking-wider text-slate-400 flex items-center gap-2">
+          <span>📡</span> Live Session Telemetry (Real-Time Prototype Activity)
+        </h3>
+        <span class="text-[11px] font-mono text-emerald-600 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded-full font-bold">Active Localhost Session</span>
+      </div>
+
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+        <div class="bg-white border border-slate-200 p-5 rounded-2xl shadow-sm space-y-1">
+          <span class="text-xs font-bold text-slate-500">Live Session Visitors</span>
+          <div id="statSessionVisitors" class="text-2xl sm:text-3xl font-black text-[#0f172a] font-mono">1</div>
+          <div class="text-[11px] text-emerald-600 font-semibold">↑ Real unique visits</div>
+        </div>
+
+        <div class="bg-white border border-slate-200 p-5 rounded-2xl shadow-sm space-y-1">
+          <span class="text-xs font-bold text-slate-500">Diagnostics Completed</span>
+          <div id="statSessionDiagnostics" class="text-2xl sm:text-3xl font-black text-[#0b66c2] font-mono">0</div>
+          <div class="text-[11px] text-blue-600 font-semibold">Active session audits</div>
+        </div>
+
+        <div class="bg-white border border-slate-200 p-5 rounded-2xl shadow-sm space-y-1">
+          <span class="text-xs font-bold text-slate-500">Confirmed Registrations</span>
+          <div id="statSessionRegistrations" class="text-2xl sm:text-3xl font-black text-emerald-600 font-mono">0</div>
+          <div class="text-[11px] text-emerald-600 font-semibold">Verified passes generated</div>
+        </div>
+
+        <div class="bg-white border border-slate-200 p-5 rounded-2xl shadow-sm space-y-1">
+          <span class="text-xs font-bold text-slate-500">Verified Peer Referrals</span>
+          <div id="statSessionReferrals" class="text-2xl sm:text-3xl font-black text-amber-600 font-mono">0</div>
+          <div class="text-[11px] text-amber-700 font-semibold">Organic viral invites</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Real-Time Campaign Progress Toward 500 Goal -->
+    <div class="bg-gradient-to-r from-blue-900 via-indigo-900 to-slate-900 text-white rounded-3xl p-6 sm:p-8 shadow-xl relative overflow-hidden">
+      <div class="relative z-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+        <div class="space-y-2">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-blue-200 text-xs font-bold font-mono">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            LIVE CAMPAIGN PACING
+          </div>
+          <h3 class="text-2xl sm:text-3xl font-black">
+            <span id="dynTotalRegs" class="text-emerald-400 font-mono">0</span> <span class="text-slate-300 font-normal">/ 500 Verified Seats Claimed</span>
+          </h3>
+          <p class="text-xs sm:text-sm text-slate-300">
+            Real-time registrations recorded in active campaign session. Target: 500 engineering students in 7 days.
+          </p>
+        </div>
+
+        <div class="flex items-center gap-4 shrink-0">
+          <div class="bg-white/10 backdrop-blur p-4 rounded-2xl border border-white/10 text-center min-w-[120px]">
+            <span class="text-[10px] text-slate-300 uppercase tracking-wider block font-bold">Seats Left</span>
+            <span id="dynRemainingSeats" class="text-2xl font-black text-amber-400 font-mono">500</span>
+          </div>
+          <div class="bg-white/10 backdrop-blur p-4 rounded-2xl border border-white/10 text-center min-w-[140px]" title="Customer Acquisition Cost: Total ₹2,000 Budget ÷ Current Registrations (Target is ₹4.00 at 500 students)">
+            <span class="text-[10px] text-slate-300 uppercase tracking-wider block font-bold">Cost Per Student (CAC)</span>
+            <span id="dynCurrentCac" class="text-2xl font-black text-emerald-400 font-mono">₹0.00</span>
+            <span class="text-[9px] text-slate-400 block mt-0.5">₹2,000 Budget ÷ Regs (Goal ₹4)</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Real-Time Total Progress Bar -->
+      <div class="mt-6 space-y-1.5 relative z-10">
+        <div class="flex justify-between text-xs font-mono font-bold text-slate-300">
+          <span>0%</span>
+          <span id="dynTotalPct" class="text-emerald-400">0.0% of 500 Goal</span>
+          <span>100% (500 Goal)</span>
+        </div>
+        <div class="h-4 bg-white/10 rounded-full overflow-hidden p-0.5 border border-white/10">
+          <div id="dynTotalBar" class="h-full bg-gradient-to-r from-blue-500 via-indigo-500 to-emerald-400 rounded-full transition-all duration-500" style="width: 0%"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Live Channel Attribution & 7-Day Velocity Grid -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      
+      <!-- Budget Card -->
+      <div class="bg-white border border-slate-200 rounded-3xl p-6 shadow-sm space-y-4">
+        <h3 class="text-base font-black text-[#0f172a] flex items-center gap-2">
+          <span>💰</span> Budget Allocation & CAC (₹2,000)
+        </h3>
+        
+        <div class="space-y-3">
+          <div>
+            <div class="flex justify-between text-xs font-bold mb-1">
+              <span class="text-slate-600">CR Bounty Pool (Top 4 Leaders)</span>
+              <span class="font-mono text-slate-900">₹2,000 (100%)</span>
+            </div>
+            <div class="h-2.5 bg-slate-100 rounded-full overflow-hidden">
+              <div class="h-full bg-[#0b66c2] w-full"></div>
+            </div>
+          </div>
+          <div>
+            <div class="flex justify-between text-xs font-bold mb-1">
+              <span class="text-slate-600">Paid Ads (Meta / Google)</span>
+              <span class="font-mono text-red-600">₹0 (Deliberately Rejected)</span>
+            </div>
+            <div class="h-2.5 bg-slate-100 rounded-full overflow-hidden">
+              <div class="h-full bg-red-200 w-0"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="pt-4 border-t border-slate-100 space-y-2 text-xs">
+          <div class="flex justify-between">
+            <span class="text-slate-500">Total Campaign Budget:</span>
+            <span class="font-mono font-bold text-slate-900">₹2,000</span>
+          </div>
+          <div class="flex justify-between">
+            <span class="text-slate-500">Target Registrations:</span>
+            <span class="font-mono font-bold text-emerald-600">500 Students</span>
+          </div>
+          <div class="flex justify-between">
+            <span class="text-slate-500">Target Maximum CAC:</span>
+            <span class="font-mono font-bold text-[#0b66c2]">₹4.00 / student</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Real-Time Channel Attribution Breakdown (Dynamic Bars) -->
+      <div class="lg:col-span-2 bg-white border border-slate-200 rounded-3xl p-6 shadow-sm space-y-4">
+        <div class="flex items-center justify-between">
+          <h3 class="text-base font-black text-[#0f172a] flex items-center gap-2">
+            <span>📊</span> Live Channel Attribution Breakdown
+          </h3>
+          <span class="text-[11px] font-mono font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">Live Real-Time Data</span>
+        </div>
+
+        <div class="space-y-4 text-xs">
+          <!-- Channel 1 -->
+          <div>
+            <div class="flex justify-between mb-1">
+              <span class="text-slate-800 font-bold">1. Class Representative (CR) Bounty Broadcasts</span>
+              <span class="font-mono text-[#0b66c2] font-bold"><span id="chanDirectCount">0</span> / 250 Target (<span id="chanDirectPct">0%</span>)</span>
+            </div>
+            <div class="h-3 bg-slate-100 rounded-full overflow-hidden">
+              <div id="chanDirectBar" class="h-full bg-[#0b66c2] rounded-full transition-all duration-500" style="width: 0%"></div>
+            </div>
+            <span class="text-[11px] text-slate-400 mt-1 block">Direct registrations from official college WhatsApp groups</span>
+          </div>
+
+          <!-- Channel 2 -->
+          <div>
+            <div class="flex justify-between mb-1">
+              <span class="text-slate-800 font-bold">2. Peer-to-Peer Viral WhatsApp Loop (Vault Unlock)</span>
+              <span class="font-mono text-emerald-600 font-bold"><span id="chanViralCount">0</span> / 175 Target (<span id="chanViralPct">0%</span>)</span>
+            </div>
+            <div class="h-3 bg-slate-100 rounded-full overflow-hidden">
+              <div id="chanViralBar" class="h-full bg-emerald-500 rounded-full transition-all duration-500" style="width: 0%"></div>
+            </div>
+            <span class="text-[11px] text-slate-400 mt-1 block">Organic invites from registered students unlocking the VIP starter repo ($K = 1.38$)</span>
+          </div>
+
+          <!-- Channel 3 -->
+          <div>
+            <div class="flex justify-between mb-1">
+              <span class="text-slate-800 font-bold">3. Engineering Telegram & Discord Communities</span>
+              <span class="font-mono text-amber-700 font-bold"><span id="chanCommunityCount">0</span> / 75 Target (<span id="chanCommunityPct">0%</span>)</span>
+            </div>
+            <div class="h-3 bg-slate-100 rounded-full overflow-hidden">
+              <div id="chanCommunityBar" class="h-full bg-amber-500 rounded-full transition-all duration-500" style="width: 0%"></div>
+            </div>
+            <span class="text-[11px] text-slate-400 mt-1 block">Placement prep study channels and campus tech club groups</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 7-Day Registration Velocity (Daily Range Allocation to 500) -->
+    <div class="bg-white border border-slate-200 rounded-3xl p-6 shadow-sm space-y-4">
+      <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2">
+        <div>
+          <div class="flex items-center gap-2">
+            <h3 class="text-base font-black text-[#0f172a]">7-Day Registration Velocity (Daily Range Model)</h3>
+            <span id="activeCampaignDayPill" class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200">
+              🟢 Day 1 of 7 In Progress
+            </span>
+          </div>
+          <p class="text-xs text-slate-500 mt-0.5">
+            Milestones guide the 500-student trajectory. Days are flexible and can exceed targets based on viral momentum. Click any day to select it.
+          </p>
+        </div>
+        <div class="flex items-center gap-2 text-[10px] font-bold">
+          <span class="flex items-center gap-1 text-slate-600 bg-slate-100 px-2 py-0.5 rounded border border-slate-200">
+            Target Trajectory: 25 ➔ 65 ➔ 110 ➔ 135 ➔ 95 ➔ 40 ➔ 30 = 500
+          </span>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-7 gap-2 pt-4 items-end h-60 text-center">
+        <!-- Day 1 (Target: 25) -->
+        <div id="dayCol1" class="space-y-1.5 flex flex-col items-center justify-end h-full day-col cursor-pointer p-1.5 rounded-xl transition-all" data-day="1" title="Day 1 (Mon): Launch & CR WhatsApp Outreach">
+          <span id="day1Count" class="text-[11px] font-mono font-bold text-slate-700">0/25</span>
+          <div class="w-full bg-slate-100 rounded-t-lg h-36 flex items-end overflow-hidden p-0.5 border border-slate-200">
+            <div id="day1Bar" class="w-full bg-emerald-500 rounded-t transition-all duration-500" style="height: 0%"></div>
+          </div>
+          <span id="day1Label" class="text-[10px] font-bold text-slate-800 block">Day 1 (Mon)</span>
+          <span id="day1Badge" class="text-[9px] font-bold text-slate-400 block font-mono">0%</span>
+        </div>
+
+        <!-- Day 2 (Target: 65) -->
+        <div id="dayCol2" class="space-y-1.5 flex flex-col items-center justify-end h-full day-col cursor-pointer p-1.5 rounded-xl transition-all" data-day="2" title="Day 2 (Tue): Placement Club Partnerships">
+          <span id="day2Count" class="text-[11px] font-mono font-bold text-slate-700">0/65</span>
+          <div class="w-full bg-slate-100 rounded-t-lg h-36 flex items-end overflow-hidden p-0.5 border border-slate-200">
+            <div id="day2Bar" class="w-full bg-[#0b66c2] rounded-t transition-all duration-500" style="height: 0%"></div>
+          </div>
+          <span id="day2Label" class="text-[10px] font-bold text-slate-800 block">Day 2 (Tue)</span>
+          <span id="day2Badge" class="text-[9px] font-bold text-slate-400 block font-mono">0%</span>
+        </div>
+
+        <!-- Day 3 (Target: 110) -->
+        <div id="dayCol3" class="space-y-1.5 flex flex-col items-center justify-end h-full day-col cursor-pointer p-1.5 rounded-xl transition-all" data-day="3" title="Day 3 (Wed): Viral WhatsApp Peer Loop">
+          <span id="day3Count" class="text-[11px] font-mono font-bold text-slate-700">0/110</span>
+          <div class="w-full bg-slate-100 rounded-t-lg h-36 flex items-end overflow-hidden p-0.5 border border-slate-200">
+            <div id="day3Bar" class="w-full bg-indigo-600 rounded-t transition-all duration-500" style="height: 0%"></div>
+          </div>
+          <span id="day3Label" class="text-[10px] font-bold text-slate-800 block">Day 3 (Wed)</span>
+          <span id="day3Badge" class="text-[9px] font-bold text-slate-400 block font-mono">0%</span>
+        </div>
+
+        <!-- Day 4 (Target: 135 Peak) -->
+        <div id="dayCol4" class="space-y-1.5 flex flex-col items-center justify-end h-full day-col cursor-pointer p-1.5 rounded-xl transition-all" data-day="4" title="Day 4 (Thu Peak): Viral Peak & ATS Urgency Push">
+          <span id="day4Count" class="text-[11px] font-mono font-bold text-slate-700">0/135</span>
+          <div class="w-full bg-emerald-50 rounded-t-lg h-36 flex items-end overflow-hidden p-0.5 border-2 border-emerald-300">
+            <div id="day4Bar" class="w-full bg-emerald-500 rounded-t transition-all duration-500" style="height: 0%"></div>
+          </div>
+          <span id="day4Label" class="text-[10px] font-black text-emerald-700 block">Day 4 (Thu Peak)</span>
+          <span id="day4Badge" class="text-[9px] font-bold text-emerald-600 block font-mono">0%</span>
+        </div>
+
+        <!-- Day 5 (Target: 95) -->
+        <div id="dayCol5" class="space-y-1.5 flex flex-col items-center justify-end h-full day-col cursor-pointer p-1.5 rounded-xl transition-all" data-day="5" title="Day 5 (Fri): Telegram Prep Communities Drive">
+          <span id="day5Count" class="text-[11px] font-mono font-bold text-slate-700">0/95</span>
+          <div class="w-full bg-slate-100 rounded-t-lg h-36 flex items-end overflow-hidden p-0.5 border border-slate-200">
+            <div id="day5Bar" class="w-full bg-[#0b66c2] rounded-t transition-all duration-500" style="height: 0%"></div>
+          </div>
+          <span id="day5Label" class="text-[10px] font-bold text-slate-800 block">Day 5 (Fri)</span>
+          <span id="day5Badge" class="text-[9px] font-bold text-slate-400 block font-mono">0%</span>
+        </div>
+
+        <!-- Day 6 (Target: 40) -->
+        <div id="dayCol6" class="space-y-1.5 flex flex-col items-center justify-end h-full day-col cursor-pointer p-1.5 rounded-xl transition-all" data-day="6" title="Day 6 (Sat): Final Seats Scarcity Reminders">
+          <span id="day6Count" class="text-[11px] font-mono font-bold text-slate-700">0/40</span>
+          <div class="w-full bg-slate-100 rounded-t-lg h-36 flex items-end overflow-hidden p-0.5 border border-slate-200">
+            <div id="day6Bar" class="w-full bg-amber-500 rounded-t transition-all duration-500" style="height: 0%"></div>
+          </div>
+          <span id="day6Label" class="text-[10px] font-bold text-slate-800 block">Day 6 (Sat)</span>
+          <span id="day6Badge" class="text-[9px] font-bold text-slate-400 block font-mono">0%</span>
+        </div>
+
+        <!-- Day 7 (Target: 30) -->
+        <div id="dayCol7" class="space-y-1.5 flex flex-col items-center justify-end h-full day-col cursor-pointer p-1.5 rounded-xl transition-all" data-day="7" title="Day 7 (Sun): Live AI Workshop Day">
+          <span id="day7Count" class="text-[11px] font-mono font-bold text-slate-700">0/30</span>
+          <div class="w-full bg-slate-100 rounded-t-lg h-36 flex items-end overflow-hidden p-0.5 border border-slate-200">
+            <div id="day7Bar" class="w-full bg-blue-500 rounded-t transition-all duration-500" style="height: 0%"></div>
+          </div>
+          <span id="day7Label" class="text-[10px] font-bold text-slate-800 block">Day 7 (Sun)</span>
+          <span id="day7Badge" class="text-[9px] font-bold text-slate-400 block font-mono">0%</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Live Activity Log Stream -->
+    <div class="bg-white border border-slate-200 rounded-3xl p-6 shadow-sm space-y-3">
+      <div class="flex items-center justify-between">
+        <h3 class="text-xs font-extrabold uppercase tracking-wider text-slate-500 flex items-center gap-2">
+          <span>⚡</span> Live Registration Stream
+        </h3>
+        <span class="text-[10px] font-mono text-slate-400">Real-Time Event Bus</span>
+      </div>
+      <div id="liveActivityLog" class="space-y-2 max-h-48 overflow-y-auto text-xs">
+        <div class="text-slate-400 italic text-[11px] p-2 bg-slate-50 rounded-xl border border-slate-100">
+          Waiting for initial student registration. Fill the form in Student View or test using the sandbox buttons below.
+        </div>
+      </div>
+    </div>
+
+    <!-- Admin / Evaluator Testbed for Webhook & Growth Simulation -->
+    <div class="bg-blue-50/60 border border-blue-200 rounded-3xl p-6 shadow-sm space-y-4">
+      <div class="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4">
+        <div>
+          <span class="bg-[#0b66c2] text-white text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider">
+            ADMIN & EVALUATOR SANDBOX
+          </span>
+          <h3 class="text-base font-black text-[#0f172a] mt-1">
+            Live Campaign Growth Simulation & Webhook Testbed
+          </h3>
+          <p class="text-xs text-slate-500 mt-0.5">
+            Test how the numbers grow in real-time as students register, Class Representatives broadcast, or peer referrals are verified.
+          </p>
+        </div>
+        <div class="shrink-0 flex flex-wrap items-center gap-2">
+          <button type="button" id="btnAdminTriggerWebhook" class="bg-[#0b66c2] hover:bg-blue-700 text-white font-bold text-xs px-3.5 py-2.5 rounded-xl shadow-md transition-all flex items-center gap-1.5">
+            <span>⚡ +1 Peer Referral</span>
+          </button>
+          <button type="button" id="btnAdminTriggerCRBatch" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs px-3.5 py-2.5 rounded-xl shadow-md transition-all flex items-center gap-1.5">
+            <span>📢 +15 CR Batch</span>
+          </button>
+          <button type="button" id="btnAdminAdvanceDay" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs px-3.5 py-2.5 rounded-xl shadow-md transition-all flex items-center gap-1.5" title="Advance to the next day in the 7-day model">
+            <span>⏩ Complete Day 1 & Start Day 2</span>
+          </button>
+          <button type="button" id="btnAdminResetReferrals" class="bg-white hover:bg-slate-100 text-slate-600 border border-slate-200 font-bold text-xs px-3 py-2.5 rounded-xl transition-all">
+            Reset Referrals
+          </button>
+          <button type="button" id="btnAdminResetTelemetry" class="bg-slate-100 hover:bg-slate-200 text-slate-600 border border-slate-300 font-bold text-xs px-3 py-2.5 rounded-xl transition-all">
+            Reset to 0
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Floating NxtWave WhatsApp Help Button -->
+  <div class="fixed bottom-6 right-6 z-50">
+    <button type="button" id="btnFloatChat" class="bg-[#25D366] hover:bg-[#1ea952] text-white text-sm font-bold px-4 py-2.5 rounded-full shadow-2xl flex items-center gap-2 transition-all hover:scale-105">
+      <span>Chat with us</span>
+      <div class="w-6 h-6 rounded-full bg-white text-[#25D366] flex items-center justify-center">
+        <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.007c.106.005.249-.04.39.299.144.347.491 1.2.534 1.288.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.353.101.173.45 1.743 1.956 2.052.195.04.382.016.49-.092.115-.115.49-.572.62-1.288.13-.716.26-.6.39-.542.13.058.823.388.965.46.142.072.237.108.272.167.035.059.035.343-.109.748z"/></svg>
+      </div>
+    </button>
+  </div>
+
+  <!-- Bottom Cookie Banner -->
+  <div id="cookieBanner" class="bg-white/95 border-t border-slate-200 py-3 px-4 text-center text-xs text-slate-600 fixed bottom-0 left-0 right-0 z-40 backdrop-blur flex items-center justify-center gap-4 shadow-lg">
+    <span>By continuing to use this website, you accept our <a href="javascript:void(0)" onclick="showToast('Viewing NxtWave Terms of Service')" class="text-[#0b66c2] underline">Terms</a> and <a href="javascript:void(0)" onclick="showToast('Viewing NxtWave Cookie Policy')" class="text-[#0b66c2] underline">Cookie Policy</a>.</span>
+    <button type="button" id="btnCookieOk" class="bg-[#0f172a] hover:bg-slate-800 text-white font-bold px-4 py-1.5 rounded-lg text-xs transition-all">
+      OK
+    </button>
+  </div>
+
+  <!-- Interactive Generic Modal -->
+  <div id="infoModal" class="nxt-modal-backdrop hidden">
+    <div class="bg-white border border-slate-200 rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl relative animate-in fade-in zoom-in-95 duration-200">
+      <div class="flex items-center justify-between border-b border-slate-100 pb-4 mb-4">
+        <h3 id="modalTitle" class="text-xl font-black text-slate-900">Modal Title</h3>
+        <button type="button" id="btnModalClose" class="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 flex items-center justify-center text-sm font-bold">✕</button>
+      </div>
+      <div id="modalContent" class="text-sm text-slate-600 space-y-3 leading-relaxed">
+        Modal Content
+      </div>
+      <div class="mt-6 pt-4 border-t border-slate-100 flex justify-end">
+        <button type="button" id="btnModalAction" class="bg-[#0b66c2] hover:bg-blue-700 text-white font-bold text-xs px-5 py-2.5 rounded-xl shadow-md">
+          Explore Program →
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- DEDICATED AUTHENTICATION MODAL (Role-Based: Student vs Growth Admin) -->
+  <div id="authModal" class="nxt-modal-backdrop hidden">
+    <div class="bg-white border border-slate-200 rounded-3xl max-w-lg w-full p-6 sm:p-7 shadow-2xl relative animate-in fade-in zoom-in-95 duration-200 max-h-[92vh] overflow-y-auto">
+      
+      <!-- Modal Header -->
+      <div class="flex items-center justify-between border-b border-slate-100 pb-3 mb-4">
+        <div class="flex items-center gap-2.5">
+          <div class="w-8 h-8 rounded-xl bg-[#0b66c2]/10 text-[#0b66c2] flex items-center justify-center font-black text-sm">
+            🔐
+          </div>
+          <div>
+            <h3 class="text-base font-black text-slate-900 leading-tight">NxtWave Authentication Portal</h3>
+            <p class="text-[11px] text-slate-500">Sign in to access your authorized role dashboard</p>
+          </div>
+        </div>
+        <button type="button" id="btnAuthModalClose" class="w-7 h-7 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 flex items-center justify-center text-xs font-bold transition-colors">✕</button>
+      </div>
+
+      <!-- Role Selection Tabs -->
+      <div class="grid grid-cols-2 p-1 bg-slate-100 rounded-2xl mb-4 border border-slate-200">
+        <button type="button" id="tabBtnStudent" class="py-2.5 px-3 rounded-xl text-xs font-bold transition-all bg-white text-[#0b66c2] shadow-sm flex items-center justify-center gap-1.5">
+          <span>🎓</span> Student Portal
+        </button>
+        <button type="button" id="tabBtnAdmin" class="py-2.5 px-3 rounded-xl text-xs font-bold transition-all text-slate-600 hover:text-slate-900 flex items-center justify-center gap-1.5">
+          <span>🛡️</span> Growth Admin
+        </button>
+      </div>
+
+      <!-- 1. STUDENT AUTHENTICATION TAB -->
+      <div id="tabContentStudent" class="space-y-4">
+        <!-- Contextual Prompt Banner when triggered from Step 1 -->
+        <div id="authStepPromptBanner" class="hidden p-3 bg-blue-50 border border-blue-200 rounded-2xl text-xs text-[#0b66c2] flex items-center gap-2.5">
+          <span class="text-base">🔒</span>
+          <div>
+            <span class="font-extrabold block text-slate-800">Student Sign-In Required for Step 2</span>
+            <span class="text-[11px] text-slate-600">Please sign in or register to unlock the Project Diagnostic and continue.</span>
+          </div>
+        </div>
+
+        <!-- Sub-Toggle: Sign In vs Register -->
+        <div class="flex items-center justify-between border-b border-slate-100 pb-2">
+          <span class="text-xs font-extrabold text-slate-700" id="studentAuthHeading">Student Sign-In</span>
+          <div class="flex gap-2">
+            <button type="button" id="subBtnStudentSignIn" class="text-xs font-bold text-[#0b66c2] underline">Sign In</button>
+            <span class="text-slate-300">|</span>
+            <button type="button" id="subBtnStudentRegister" class="text-xs font-bold text-slate-500 hover:text-slate-800">New Registration</button>
+          </div>
+        </div>
+
+        <!-- Student Sign In Form -->
+        <div id="formStudentSignIn" class="space-y-3">
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">Registered Mobile or College Email</label>
+            <input type="text" id="inputStudentLoginId" autocomplete="off" placeholder="e.g. 9876543210 or aarav@jntu.ac.in" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#0b66c2]/30">
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">Password / 6-Digit OTP</label>
+            <input type="password" id="inputStudentLoginPass" autocomplete="new-password" placeholder="Enter password (demo: 123456)" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#0b66c2]/30">
+          </div>
+          <button type="button" id="btnSubmitStudentSignIn" class="w-full bg-[#0b66c2] hover:bg-blue-700 text-white font-bold py-2.5 rounded-xl text-xs shadow-md transition-all">
+            🚀 Sign In as Student →
+          </button>
+
+          <!-- 1-Click Fast Student Demo Sign In -->
+          <div class="pt-2 border-t border-slate-100">
+            <span class="text-[11px] text-slate-400 block mb-1.5 font-medium">Fast 1-Click Evaluator Student Demo:</span>
+            <button type="button" id="btnQuickStudentDemo" class="w-full bg-blue-50 hover:bg-blue-100/80 text-[#0b66c2] border border-blue-200 font-bold py-2 rounded-xl text-xs transition-all flex items-center justify-center gap-1.5">
+              <span>⚡ 1-Click Sign-In (Aarav Sharma - JNTU CSE)</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Student Register Form (Hidden by default) -->
+        <div id="formStudentRegister" class="space-y-3 hidden">
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">Full Name</label>
+            <input type="text" id="inputRegStudentName" autocomplete="off" placeholder="e.g. Priyanshu Verma" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2 text-xs text-slate-900">
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">College / University</label>
+            <input type="text" id="inputRegStudentCollege" autocomplete="off" placeholder="e.g. VNR VJIET / SRM University" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2 text-xs text-slate-900">
+          </div>
+          <div class="grid grid-cols-2 gap-2">
+            <div>
+              <label class="block text-xs font-bold text-slate-700 mb-1">Branch</label>
+              <select id="selectRegStudentBranch" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-2.5 py-2 text-xs text-slate-900">
+                <option value="cse">CSE / IT / AI</option>
+                <option value="ece">ECE / Electronics</option>
+                <option value="core">Mech / Civil / Other</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-slate-700 mb-1">Graduation Year</label>
+              <select id="selectRegStudentYear" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-2.5 py-2 text-xs text-slate-900">
+                <option value="2025">2025 (Final Year)</option>
+                <option value="2026">2026 (Pre-Final)</option>
+              </select>
+            </div>
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">WhatsApp Number (For Ticket Pass)</label>
+            <input type="tel" id="inputRegStudentPhone" autocomplete="off" placeholder="e.g. 9876543210" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2 text-xs text-slate-900">
+            <span class="text-[10px] text-slate-400 mt-0.5 block">ℹ️ One registration per student. Linked to your verified entry pass.</span>
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">Create Account Password</label>
+            <div class="relative">
+              <input type="password" id="inputRegStudentPassword" autocomplete="new-password" placeholder="Create a password (e.g. 123456)" class="w-full bg-slate-50 border border-slate-200 rounded-xl pl-3.5 pr-10 py-2 text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500/30">
+              <button type="button" id="btnToggleRegPassword" class="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 text-xs focus:outline-none">👁️</button>
+            </div>
+            <span class="text-[10.5px] text-slate-400 mt-0.5 block">Use this password to log back into your workshop pass & learning labs.</span>
+          </div>
+          <button type="button" id="btnSubmitStudentRegister" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2.5 rounded-xl text-xs shadow-md transition-all">
+            🎟️ Create Account & Reserve Seat →
+          </button>
+        </div>
+      </div>
+
+      <!-- 2. GROWTH ADMIN AUTHENTICATION TAB -->
+      <div id="tabContentAdmin" class="space-y-4 hidden">
+        <!-- Restricted Area Notice -->
+        <div class="p-3 bg-slate-900 text-white rounded-2xl border border-slate-700 text-xs space-y-1">
+          <div class="flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-red-400 animate-pulse"></span>
+            <span class="font-extrabold text-white text-xs">Restricted Growth Team Area</span>
+          </div>
+          <p class="text-[11px] text-slate-400 leading-relaxed">
+            Authorized for NxtWave Growth Interns & Evaluation Ops. Access requires Level-4 Admin authorization.
+          </p>
+        </div>
+
+        <div class="space-y-3">
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">Official NxtWave Work Email</label>
+            <input type="email" id="inputAdminEmail" value="admin@nxtwave.in" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-xs text-slate-900 font-mono">
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">Admin Master Password</label>
+            <input type="password" id="inputAdminPassword" value="admin123" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-xs text-slate-900">
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">Ops Authorization Code</label>
+            <input type="text" id="inputAdminAuthCode" value="GROWTH-500-ADMIN" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-xs text-slate-900 font-mono">
+          </div>
+
+          <button type="button" id="btnSubmitAdminSignIn" class="w-full bg-[#0f172a] hover:bg-slate-800 text-white font-bold py-2.5 rounded-xl text-xs shadow-md transition-all flex items-center justify-center gap-1.5">
+            <span>🛡️ Authenticate as Growth Admin →</span>
+          </button>
+
+          <!-- 1-Click Fast Admin Sign In -->
+          <div class="pt-2 border-t border-slate-100">
+            <span class="text-[11px] text-slate-400 block mb-1.5 font-medium">Fast 1-Click Evaluator Admin Demo:</span>
+            <button type="button" id="btnQuickAdminDemo" class="w-full bg-indigo-50 hover:bg-indigo-100 text-indigo-700 border border-indigo-200 font-bold py-2 rounded-xl text-xs transition-all flex items-center justify-center gap-1.5">
+              <span>⚡ 1-Click Admin Sign-In (admin@nxtwave.in)</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- AUTHORIZATION GATE MODAL (Access Denied for Non-Admins attempting Growth Strategy) -->
+  <div id="accessDeniedModal" class="nxt-modal-backdrop hidden">
+    <div class="bg-white border border-red-200 rounded-3xl max-w-md w-full p-6 sm:p-7 shadow-2xl relative animate-in fade-in zoom-in-95 duration-200 text-center">
+      
+      <div class="w-14 h-14 rounded-2xl bg-red-100 text-red-600 flex items-center justify-center text-2xl mx-auto mb-4 shadow-xs">
+        🚫
+      </div>
+
+      <h3 class="text-lg font-black text-slate-900 mb-1">Growth Admin Access Required</h3>
+      <p class="text-xs text-slate-500 mb-4 leading-relaxed">
+        The <span class="font-bold text-slate-800">500-Student Growth Strategy, Real-Time CAC Telemetry, and Campaign Webhooks</span> are restricted to NxtWave Internal Growth Team Admins.
+      </p>
+
+      <div class="p-3 bg-red-50 border border-red-200 rounded-2xl text-left text-xs mb-5 space-y-1">
+        <div class="flex items-center justify-between text-red-800 font-bold">
+          <span>Active Role:</span>
+          <span id="deniedCurrentRoleBadge" class="font-mono bg-white px-2 py-0.5 rounded border border-red-200">Student Attendee</span>
+        </div>
+        <div class="flex items-center justify-between text-red-700">
+          <span>Missing Permission:</span>
+          <span class="font-mono text-[10px]">nxtwave.growth.telemetry.view</span>
+        </div>
+      </div>
+
+      <div class="space-y-2">
+        <button type="button" id="btnDeniedSwitchToAdmin" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2.5 rounded-xl text-xs shadow-md transition-all flex items-center justify-center gap-1.5">
+          <span>🛡️ Authenticate as Growth Admin →</span>
+        </button>
+        <button type="button" id="btnDeniedStayStudent" class="w-full bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold py-2.5 rounded-xl text-xs transition-all">
+          Return to Student Experience
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Notification Toast -->
+  <div id="toastNotification" class="bg-slate-900 text-white px-5 py-3 rounded-2xl shadow-2xl flex items-center gap-3 border border-slate-700 text-xs font-semibold">
+    <span id="toastIcon">ℹ️</span>
+    <span id="toastMessage">Notification message</span>
+  </div>
+
+  <!-- Hidden Canvas for Ticket Image Generation -->
+  <canvas id="ticketCanvas" width="800" height="420" class="hidden"></canvas>
+
+  <script src="app.js"></script>
+</body>
+</html>

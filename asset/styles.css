@@ -1,0 +1,268 @@
+/* NxtWave CCBP.in Design System & Interactive UI */
+
+:root {
+  --primary-blue: #0b66c2;
+  --primary-hover: #0056d2;
+  --dark-text: #0f172a;
+  --body-bg: #ffffff;
+}
+
+/* CRITICAL: Ensure hidden works 100% reliably regardless of Tailwind CDN */
+.hidden {
+  display: none !important;
+}
+
+body {
+  background-color: #ffffff;
+  color: #1e293b;
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  overflow-x: hidden;
+}
+
+/* NxtWave Card Styling */
+.nxt-card {
+  box-shadow: 0 10px 30px -10px rgba(11, 102, 194, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.02);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Selected & Hover state for option cards */
+.option-card {
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.option-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px -5px rgba(11, 102, 194, 0.12), 0 4px 6px -2px rgba(0, 0, 0, 0.02);
+}
+
+.option-card:active {
+  transform: scale(0.985);
+}
+
+.option-card.active {
+  border-color: #0b66c2 !important;
+  background-color: #eff6ff !important;
+  box-shadow: 0 0 0 1px #0b66c2, 0 10px 20px -5px rgba(11, 102, 194, 0.18) !important;
+}
+
+/* Radio & Checkbox styling */
+input[type="radio"], input[type="checkbox"] {
+  accent-color: #0b66c2;
+  width: 1.25rem;
+  height: 1.25rem;
+  cursor: pointer;
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+input[type="radio"]:active, input[type="checkbox"]:active {
+  transform: scale(1.15);
+}
+
+/* Ticket Design & Reveal Animation */
+#ticketCard {
+  background: #ffffff;
+  position: relative;
+  box-shadow: 0 20px 40px -15px rgba(11, 102, 194, 0.12);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+#ticketCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #0b66c2, #4f46e5, #0b66c2);
+}
+
+@keyframes ticketGlowReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(20px) scale(0.98);
+    box-shadow: 0 0 0 rgba(11, 102, 194, 0);
+  }
+  50% {
+    box-shadow: 0 20px 50px -10px rgba(11, 102, 194, 0.35);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    box-shadow: 0 20px 40px -15px rgba(11, 102, 194, 0.12);
+  }
+}
+
+.ticket-enter-anim {
+  animation: ticketGlowReveal 0.65s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Shimmer Sheen Beam across ticket */
+@keyframes sheenPass {
+  0% {
+    transform: translateX(-150%) skewX(-20deg);
+  }
+  100% {
+    transform: translateX(250%) skewX(-20deg);
+  }
+}
+
+.ticket-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.ticket-shimmer::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.45) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  pointer-events: none;
+  animation: sheenPass 1.8s ease-in-out 0.25s;
+}
+
+/* Smooth Section Entrance */
+@keyframes sectionEnter {
+  0% {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.section-animate-in {
+  animation: sectionEnter 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Call-to-Action Breathing Pulse & Micro-Interactions */
+@keyframes ctaPulse {
+  0%, 100% {
+    box-shadow: 0 10px 25px -5px rgba(11, 102, 194, 0.35);
+    transform: translateY(0);
+  }
+  50% {
+    box-shadow: 0 14px 30px -4px rgba(11, 102, 194, 0.55);
+    transform: translateY(-1px);
+  }
+}
+
+.btn-cta-pulse {
+  animation: ctaPulse 3s infinite ease-in-out;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-cta-pulse:hover {
+  transform: translateY(-2px) scale(1.01);
+  box-shadow: 0 16px 32px -4px rgba(11, 102, 194, 0.65);
+}
+
+.btn-cta-pulse:active {
+  transform: scale(0.98);
+}
+
+/* Live Event Stream Highlight Flash */
+@keyframes eventSlideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-12px);
+    background-color: #d1fae5;
+  }
+  60% {
+    background-color: #d1fae5;
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    background-color: #ffffff;
+  }
+}
+
+.event-flash-in {
+  animation: eventSlideIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Utility animations */
+.stroke-dasharray-anim {
+  transition: stroke-dasharray 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Modal Overlay */
+.nxt-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(4px);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+/* Notification Toast with Spring Ease */
+#toastNotification {
+  position: fixed;
+  bottom: 5.5rem;
+  right: 1.5rem;
+  z-index: 99;
+  transform: translateY(60px) scale(0.95);
+  opacity: 0;
+  transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+#toastNotification.show {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f8fafc;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Universal Caret & Selection Suppression on non-input text (Prevents text caret in words) */
+body, h1, h2, h3, h4, h5, h6, p, span, div, label, button, a {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  caret-color: transparent !important;
+}
+
+/* Allow text input and natural caret ONLY inside actual form fields */
+input, textarea {
+  -webkit-user-select: text !important;
+  -moz-user-select: text !important;
+  -ms-user-select: text !important;
+  user-select: text !important;
+  caret-color: #0b66c2 !important;
+}
+
+/* Ensure all option card elements show hand pointer cursor everywhere */
+.option-card, .option-card * {
+  cursor: pointer !important;
+}
