@@ -68,11 +68,14 @@ The application also includes a built-in Growth Operations Telemetry dashboard a
 - **Backend / Server:** Node.js static server (`asset/server.js`) for local development; configured for zero-config Vercel static deployment (`vercel.json`)
 - **Performance:** 99+ Google Lighthouse score, zero external framework overhead, sub-300ms page load times on mobile 3G/4G connections
 
+> 📖 **Full Architectural Documentation:** For comprehensive component interaction diagrams, data flow models, and technical trade-offs, see [`ARCHITECTURE.md`](./ARCHITECTURE.md).
+
 ---
 
 ## 📁 Repository Structure
 
 ```
+├── ARCHITECTURE.md       # Comprehensive system architecture & data flow diagrams
 ├── index.html            # Main application entry point (Student View + Admin Telemetry)
 ├── app.js                # Core logic, Canvas ticket generator, referral engine, telemetry
 ├── styles.css            # Custom animations, ticket styling, shimmer effects
