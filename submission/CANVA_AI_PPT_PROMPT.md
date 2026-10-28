@@ -114,7 +114,7 @@ SLIDE 4 — Build One Thing: The Dual-Engine Working Growth Asset
 Top section:
 - Small teal section label: 4 · THE WORKING ASSET
 - Large, bold, dark navy headline: Beyond a Landing Page: Interactive Funnel & Telemetry Engine
-- Subtitle: Live Working Prototype: nxtwave-growth-intern.vercel.app | Built with vanilla HTML5/JS/Canvas for 100% device compatibility.
+- Subtitle: Live Working Prototype: nxtwave-growth-intern-xi.vercel.app | Built with vanilla HTML5/JS/Canvas for 100% device compatibility.
 
 Main content: 3-Column Feature Architecture Cards
 

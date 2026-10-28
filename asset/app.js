@@ -507,6 +507,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
 
+  function getReferralUrl(ticketId) {
+    const tid = ticketId || (state && state.studentData && state.studentData.ticketId) || 'NW-AI-2025';
+    if (typeof window !== 'undefined' && window.location && window.location.origin && window.location.origin.includes('vercel.app')) {
+      return `${window.location.origin}/?ref=${tid}`;
+    }
+    return `https://nxtwave-growth-intern-xi.vercel.app/?ref=${tid}`;
+  }
+
   // DOM Elements - Views
   const studentView = document.getElementById('studentView');
   const dashboardView = document.getElementById('dashboardView');
@@ -1004,7 +1012,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (passStudentName) passStudentName.textContent = sName;
       if (passCollegeName) passCollegeName.textContent = `${sCollege} (${sBranch})`;
       if (passTicketId) passTicketId.textContent = `#${sTicket}`;
-      if (referralUrlInput) referralUrlInput.value = `https://nxtwave.ai/ai60m?ref=${sTicket}`;
+      if (referralUrlInput) referralUrlInput.value = getReferralUrl(sTicket);
     }
 
     const ticketCardEl = document.getElementById('ticketCard');
@@ -1370,7 +1378,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (passStudentName) passStudentName.textContent = matchedAccount.name;
         if (passCollegeName) passCollegeName.textContent = `${matchedAccount.college} (${(matchedAccount.branch || 'CSE').toUpperCase()})`;
         if (passTicketId) passTicketId.textContent = `#${matchedAccount.ticketId}`;
-        if (referralUrlInput) referralUrlInput.value = `https://nxtwave.ai/ai60m?ref=${matchedAccount.ticketId}`;
+        if (referralUrlInput) referralUrlInput.value = getReferralUrl(matchedAccount.ticketId);
 
         closeAuthModal();
         switchToStudentView();
@@ -1451,7 +1459,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (passStudentName) passStudentName.textContent = 'Aarav Sharma';
       if (passCollegeName) passCollegeName.textContent = `JNTU Hyderabad (${state.studentData.branch.toUpperCase()})`;
       if (passTicketId) passTicketId.textContent = '#NW-AI-9421';
-      if (referralUrlInput) referralUrlInput.value = 'https://nxtwave.ai/ai60m?ref=NW-AI-9421';
+      if (referralUrlInput) referralUrlInput.value = getReferralUrl('NW-AI-9421');
 
       closeAuthModal();
       switchToStudentView();
@@ -1517,7 +1525,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (passStudentName) passStudentName.textContent = name;
       if (passCollegeName) passCollegeName.textContent = `${college} (${branch.toUpperCase()})`;
       if (passTicketId) passTicketId.textContent = `#${freshTicketId}`;
-      if (referralUrlInput) referralUrlInput.value = `https://nxtwave.ai/ai60m?ref=${freshTicketId}`;
+      if (referralUrlInput) referralUrlInput.value = getReferralUrl(freshTicketId);
 
       const newAccount = {
         role: 'student',
@@ -2049,7 +2057,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (passStudentName) passStudentName.textContent = name;
       if (passCollegeName) passCollegeName.textContent = `${college} (${state.studentData.branch.toUpperCase()})`;
       if (passTicketId) passTicketId.textContent = `#${assignedTicketId}`;
-      if (referralUrlInput) referralUrlInput.value = `https://nxtwave.ai/ai60m?ref=${assignedTicketId}`;
+      if (referralUrlInput) referralUrlInput.value = getReferralUrl(assignedTicketId);
 
       // Switch to Stage 3
       if (stageReport) stageReport.classList.add('hidden');
@@ -2331,7 +2339,7 @@ END:VCALENDAR`;
   // --- COPY REFERRAL LINK (Robust with fallback) ---
   if (btnCopyLink && referralUrlInput) {
     btnCopyLink.addEventListener('click', () => {
-      const textToCopy = referralUrlInput.value || `https://nxtwave.ai/ai60m?ref=${state.studentData.ticketId || 'NW-AI-2025'}`;
+      const textToCopy = referralUrlInput.value || getReferralUrl();
       if (navigator.clipboard && navigator.clipboard.writeText) {
         navigator.clipboard.writeText(textToCopy).then(() => {
           btnCopyLink.textContent = 'Copied!';
@@ -2363,7 +2371,7 @@ END:VCALENDAR`;
   // --- WHATSAPP VIRAL SHARE ---
   if (btnShareWhatsApp && referralUrlInput) {
     btnShareWhatsApp.addEventListener('click', () => {
-      const refUrl = referralUrlInput.value || `https://nxtwave.ai/ai60m?ref=${state.studentData.ticketId || 'NW-AI-2025'}`;
+      const refUrl = referralUrlInput.value || getReferralUrl();
       const shareText = encodeURIComponent(
         `Bro, final year tech placements are getting strict with AI project filters. 🚨\n\n` +
         `Check this: NxtWave is hosting a FREE 60-min live workshop where we build and deploy a real GenAI project for our resume!\n\n` +

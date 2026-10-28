@@ -2,7 +2,7 @@
 ### 7-Day Strategy, Unit Economics & Working Asset Prototype
 **Candidate:** Jashwanth  
 **Submission Form:** [https://forms.gle/xEtJSgJfeqvnxv8q6](https://forms.gle/xEtJSgJfeqvnxv8q6)  
-**Live Working Prototype:** [https://nxtwave-growth-intern.vercel.app](https://nxtwave-growth-intern.vercel.app)  
+**Live Working Prototype:** [https://nxtwave-growth-intern-xi.vercel.app](https://nxtwave-growth-intern-xi.vercel.app)  
 **GitHub Repository:** [https://github.com/jashwanth15/NxtWave-Growth-Intern](https://github.com/jashwanth15/NxtWave-Growth-Intern)  
 
 ---
@@ -85,7 +85,7 @@ A ₹2,000 budget divided across 500 registrations dictates a strict **Maximum A
 > **Challenge Note:** *"Everyone might build a landing page. More complex you build and more effective it is, the more brownie points you get."*
 
 Instead of a generic static landing page, I built a full-stack **Dual-Engine Interactive Growth Asset**:
-👉 **Live Prototype Link:** [https://nxtwave-growth-intern.vercel.app](https://nxtwave-growth-intern.vercel.app)
+👉 **Live Prototype Link:** [https://nxtwave-growth-intern-xi.vercel.app](https://nxtwave-growth-intern-xi.vercel.app)
 
 ### Core Architectural Components:
 
@@ -141,7 +141,7 @@ Instead, I overruled the AI and directed the capital into an **₹800 Campus Amb
 | Deliverable | Format | Access Link |
 | :--- | :--- | :--- |
 | **1. Growth Plan** | 2-Page Document & 5-Slide Deck | [`submission/1_GROWTH_PLAN_2PAGE.md`](./submission/1_GROWTH_PLAN_2PAGE.md) \| [`submission/1_GROWTH_PLAN_SLIDES.md`](./submission/1_GROWTH_PLAN_SLIDES.md) \| [`submission/CANVA_AI_PPT_PROMPT.md`](./submission/CANVA_AI_PPT_PROMPT.md) |
-| **2. Working Asset** | Live Production Prototype | [https://nxtwave-growth-intern.vercel.app](https://nxtwave-growth-intern.vercel.app) |
+| **2. Working Asset** | Live Production Prototype | [https://nxtwave-growth-intern-xi.vercel.app](https://nxtwave-growth-intern-xi.vercel.app) |
 | **3. The 3 Growth Tests** | Hypothesis $\rightarrow$ Test $\rightarrow$ Metric | [`submission/3_YOUR_3_TESTS.md`](./submission/3_YOUR_3_TESTS.md) |
 | **4. AI Worklog** | 3 Meaningful Prompt Iterations | [`submission/4_AI_WORKLOG.md`](./submission/4_AI_WORKLOG.md) |
 | **5. Strategic Rejection**| In-Depth Analysis of Rejected AI Ideas | [`submission/5_DELIBERATE_REJECTIONS.md`](./submission/5_DELIBERATE_REJECTIONS.md) |
