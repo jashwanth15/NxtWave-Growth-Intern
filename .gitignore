@@ -1,4 +1,16 @@
-# Local developer files
+# Local developer & submission files
 _local_submission_reference/
+submission/
+PRESENTATION_DECK.html
+create_2page_pdf.html
 .DS_Store
 *.log
+
+# Local presentation generator & binary PPTX / PDF / DOC
+*.pptx
+*.pdf
+*.doc
+*_files/
+pptxgen*.js
+jszip*.js
+generate_master_pptx.js

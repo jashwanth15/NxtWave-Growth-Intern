@@ -2,7 +2,7 @@
 
 [![Production Status](https://img.shields.io/badge/Vercel-Live_Deployment-success?style=for-the-badge&logo=vercel)](https://nxtwave-growth-intern-xi.vercel.app/)
 [![GitHub Repo](https://img.shields.io/badge/GitHub-Repository-181717?style=for-the-badge&logo=github)](https://github.com/jashwanth15/NxtWave-Growth-Intern)
-[![Challenge](https://img.shields.io/badge/Challenge-Round_1_Submission-0b66c2?style=for-the-badge)](https://forms.gle/xEtJSgJfeqvnxv8q6)
+[![Challenge](https://img.shields.io/badge/Challenge-NxtWave_Growth_Intern-0b66c2?style=for-the-badge)](https://github.com/jashwanth15/NxtWave-Growth-Intern)
 
 A high-converting, product-led registration and peer-referral web application engineered for NxtWave's free live workshop: **“Build Your First AI Project in 60 Minutes”**.
 
